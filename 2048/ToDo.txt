@@ -1,0 +1,3 @@
+Saves using linked lists of grids
+Don't generateNewBlock if nothing was moved
+When grid is filled, game ends even if more moves available
