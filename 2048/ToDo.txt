@@ -1,3 +1,4 @@
 Saves using linked lists of grids
+Animations, or staggers merging of blocks
 Don't generateNewBlock if nothing was moved
 When grid is filled, game ends even if more moves available

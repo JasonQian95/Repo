@@ -25,7 +25,7 @@ import javax.swing.JRadioButton;
 import javax.swing.KeyStroke;
 import javax.swing.border.BevelBorder;
 
-public class Game extends JFrame implements KeyListener, ActionListener {
+public class Game implements KeyListener, ActionListener {
 
 	private static class Block extends Rectangle {
 		protected static int baseValue;
@@ -189,18 +189,19 @@ public class Game extends JFrame implements KeyListener, ActionListener {
 	static final Font font = new Font("Georgia", Font.BOLD, 18);
 
 	protected static Game game;
+	protected JFrame window;
 	protected static final int LOSS = -1;
 	protected static final int WIN = 1;
 	protected boolean showPower = false;
 
 	Game() {
-		super("2048");
-		setDefaultCloseOperation(EXIT_ON_CLOSE);
-		setLayout(new BorderLayout());
+		window = new JFrame("2048");
+		window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		window.setLayout(new BorderLayout());
 		// Container content = getContentPane();
 
 		Dimension screen = Toolkit.getDefaultToolkit().getScreenSize();
-		setLocation((screen.width - width) / 2,
+		window.setLocation((screen.width - width) / 2,
 				(screen.height - height) / 2 - 100);
 
 		JMenu gameMenu = new JMenu("Game");
@@ -286,16 +287,17 @@ public class Game extends JFrame implements KeyListener, ActionListener {
 		mainMenu.add(baseMenu);
 		mainMenu.add(columnMenu);
 		mainMenu.add(rowMenu);
-		setJMenuBar(mainMenu);
+		window.setJMenuBar(mainMenu);
 
 		drawingPanel = new DrawingPanel();
 		drawingPanel.setBackground(new Color(255, 255, 255));
 		drawingPanel.setBorder(BorderFactory
 				.createBevelBorder(BevelBorder.RAISED));
 		drawingPanel.addKeyListener(this);
-		add(drawingPanel, BorderLayout.CENTER);
-		this.setContentPane(drawingPanel);
-		setVisible(true);
+		window.add(drawingPanel, BorderLayout.CENTER);
+		window.setContentPane(drawingPanel);
+		window.setResizable(false);
+		window.setVisible(true);
 
 		this.createNewGrid();
 	}
@@ -303,22 +305,24 @@ public class Game extends JFrame implements KeyListener, ActionListener {
 	public void createNewGrid() {
 		width = (columns + 1) * Block.WIDTH;
 		height = (rows + 1) * Block.HEIGHT;
-		setSize(width - 30, height + 15);
+		window.setResizable(false);
+		window.setSize(width - 30, height + 15);
+		window.setResizable(true);
 		grid = new Grid(blockValue, rows, columns);
 		drawingPanel.requestFocusInWindow();
-		repaint();
+		window.repaint();
 	}
 
 	public void gameOver(int status) {
 		if (status == game.LOSS) {
-			if (JOptionPane.showConfirmDialog(this,
+			if (JOptionPane.showConfirmDialog(window,
 					"You're out of moves!\nRestart?", "Game Over",
 					JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION) {
 				game.createNewGrid();
 			}
 		}
 		if (status == game.WIN) {
-			if (JOptionPane.showConfirmDialog(this, "You Win!\nRestart?",
+			if (JOptionPane.showConfirmDialog(window, "You Win!\nRestart?",
 					"Victory!", JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION) {
 				game.createNewGrid();
 			}
@@ -358,7 +362,7 @@ public class Game extends JFrame implements KeyListener, ActionListener {
 				|| e.getKeyCode() == KeyEvent.VK_S) {
 			grid.shiftDown();
 		}
-		repaint();
+		window.repaint();
 	}
 
 	public void keyReleased(KeyEvent e) {
@@ -381,7 +385,7 @@ public class Game extends JFrame implements KeyListener, ActionListener {
 		} else if ("Power".equals(e.getActionCommand())) // Selected "Exit"
 		{
 			game.showPower = true;
-			game.repaint();
+			window.repaint();
 		} else if ('B' == e.getActionCommand().charAt(0)) {
 			Game.blockValue = Character.getNumericValue(e.getActionCommand()
 					.charAt(1));

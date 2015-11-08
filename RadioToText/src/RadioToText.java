@@ -11,8 +11,6 @@ import java.util.ArrayList;
 
 import javax.swing.JButton;
 import javax.swing.JOptionPane;
-import org.jsoup.*;
-import org.jsoup.nodes.Document;
 
 public class RadioToText {
 
@@ -22,7 +20,7 @@ public class RadioToText {
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 
-		String fileName = "Nicky's Shit Music";
+		String fileName = "Nicky's Music";
 		BufferedWriter writer = null;
 		//final JFrame parent = new JFrame();
 		JButton button = new JButton();
@@ -50,7 +48,7 @@ public class RadioToText {
 				//doc = Jsoup.parse(doc.toString()); // is it already a string?
 				//writer.write(doc.select());
 				
-				/**
+				
 				//URL url = new URL("https://www.radiodanz.com/playlist/nowPlaying.php?randval="+ Math.random());
 				URL url = new URL("https://www.radiodanz.com/index.php/last-played");	
 				HttpURLConnection con = (HttpURLConnection) url.openConnection();
@@ -58,20 +56,17 @@ public class RadioToText {
 				InputStream is = null;
 			    is = isError ? con.getErrorStream() : con.getInputStream();
 			    BufferedReader br = new BufferedReader(new InputStreamReader(is));
-			    **/
-
-				Document doc = Jsoup.connect("https://www.radiodanz.com/playlist/nowPlaying.php?randval="+ Math.random()).get(); 
-				String textContents = doc.getElementsByTag("verticalAlign").first().text();
+			   
+				String strippedLines = "";
 				
-				String strippedLines = textContents;
-				/**
 				String line = "";
 				while (line != null)
 				{
-					line =  java.net.URLDecoder.decode(br.readLine(), "UTF-8");
+					//line =  java.net.URLDecoder.decode(br.readLine(), "UTF-8");
+					line = br.readLine();
 					strippedLines = strippedLines + line;
 				}
-				**/
+
 				
 				strippedLines = strippedLines.substring(strippedLines.indexOf("verticalAlign") + 2, strippedLines.indexOf("verticalAlign") + 72);
 				strippedLines = strippedLines.substring(strippedLines.indexOf("<strong>") + 1, strippedLines.lastIndexOf("<br />") - 1); // fiddle with constants
