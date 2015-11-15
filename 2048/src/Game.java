@@ -28,7 +28,7 @@ import javax.swing.border.BevelBorder;
 public class Game implements KeyListener, ActionListener {
 
 	private static class Block extends Rectangle {
-		protected static int baseValue;
+		protected int baseValue;
 		protected int power;
 		protected int xPos, yPos;
 		protected static final int WIDTH = 50;
@@ -38,6 +38,13 @@ public class Game implements KeyListener, ActionListener {
 			this.power = 0;
 			this.xPos = xPos;
 			this.yPos = yPos;
+		}
+
+		Block(int value, int xPos, int yPos, int baseValue) {
+			this.power = 0;
+			this.xPos = xPos;
+			this.yPos = yPos;
+			this.baseValue = baseValue;
 		}
 
 		protected void combine(Block other) {
@@ -52,7 +59,7 @@ public class Game implements KeyListener, ActionListener {
 		}
 
 		public void repaint(Graphics g) {
-			int colourVariable = 255 - (this.power * 50);
+			//int colourVariable = 255 - (this.power * 50);
 			g.setColor(new Color(255, 255 / 4, 255 / 4, 3 * 256 / 4));
 			g.fillRect(this.xPos + 1, this.yPos + 1, Block.WIDTH - 2,
 					Block.HEIGHT - 2);
@@ -76,8 +83,8 @@ public class Game implements KeyListener, ActionListener {
 				}
 				g.setFont(font);
 				g.drawChars(charsToDraw, 0, charsToDrawLength,
-						(int) (this.xPos + Block.WIDTH / 2) - charsToDrawLength * 5,
-						(int) (this.yPos + Block.HEIGHT / 2) + 3);
+						(int) (this.xPos + Block.WIDTH / 2) - charsToDrawLength
+								* 5, (int) (this.yPos + Block.HEIGHT / 2) + 3);
 			}
 		}
 	}
@@ -87,14 +94,13 @@ public class Game implements KeyListener, ActionListener {
 		protected Block[][] blocks;
 
 		Grid(int blockValues, int rows, int columns) {
-			Block.baseValue = blockValues;
 			this.rows = rows;
 			this.columns = columns;
 			blocks = new Block[columns][rows];
 			for (int i = 0; i < columns; i++) {
 				for (int j = 0; j < rows; j++) {
 					blocks[i][j] = new Block(0, Block.HEIGHT * i, Block.WIDTH
-							* j);
+							* j, blockValues);
 				}
 			}
 			generateNewBlock();
@@ -314,14 +320,14 @@ public class Game implements KeyListener, ActionListener {
 	}
 
 	public void gameOver(int status) {
-		if (status == game.LOSS) {
+		if (status == Game.LOSS) {
 			if (JOptionPane.showConfirmDialog(window,
 					"You're out of moves!\nRestart?", "Game Over",
 					JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION) {
 				game.createNewGrid();
 			}
 		}
-		if (status == game.WIN) {
+		if (status == Game.WIN) {
 			if (JOptionPane.showConfirmDialog(window, "You Win!\nRestart?",
 					"Victory!", JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION) {
 				game.createNewGrid();
@@ -384,7 +390,7 @@ public class Game implements KeyListener, ActionListener {
 			System.exit(0);
 		} else if ("Power".equals(e.getActionCommand())) // Selected "Exit"
 		{
-			game.showPower = true;
+			game.showPower = !game.showPower;
 			window.repaint();
 		} else if ('B' == e.getActionCommand().charAt(0)) {
 			Game.blockValue = Character.getNumericValue(e.getActionCommand()
