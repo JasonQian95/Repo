@@ -151,6 +151,46 @@ public class Pathfinder extends JFrame implements MouseListener {
 		createNodes();
 	}
 
+	public Node[] breadthFirstSearch(Node start, Node end) {
+		Map<Node, Node> paths = new HashMap<Node, Node>();
+		ArrayList<Node> closedNodes = new ArrayList<Node>();
+		ArrayList<Node> openNodes = new ArrayList<Node>();
+		openNodes.add(start);
+
+		while (!openNodes.isEmpty()) {
+			Node current = openNodes.get(0);
+			openNodes.remove(0);
+			closedNodes.add(current);
+			if (current == end) {
+				// reconstruct path
+				ArrayList<Node> finalPath = new ArrayList<Node>();
+				finalPath.add(current);
+				current.onPath = true;
+				while (paths.containsKey(current)) {
+					current = paths.get(current);
+					finalPath.add(current);
+					current.onPath = true;
+				}
+				repaint();
+				Node[] finalPathArray = new Node[finalPath.size()];
+				finalPathArray = finalPath.toArray(finalPathArray);
+				return finalPathArray;
+			}
+			Node[] neighbours = (Node[]) current.getNeighbours();
+			for (Node neighbour : neighbours) {
+				if (!closedNodes.contains(neighbour)) {
+					if (!openNodes.contains(neighbour)) {
+						paths.put(neighbour, current);
+						openNodes.add(neighbour);
+						neighbour.searched = true;
+					}
+				}
+			}
+		}
+		repaint();
+		return new Node[0];
+	}
+	
 	public Node[] dijkstra(Node start, Node end) {
 		Map<Node, Node> paths = new HashMap<Node, Node>();
 		ArrayList<Node> closedNodes = new ArrayList<Node>();
