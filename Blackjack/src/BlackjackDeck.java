@@ -8,6 +8,11 @@ public class BlackjackDeck extends Deck {
 	public BlackjackDeck() {
 		super();
 		initalizeMappings();
+	}	
+	
+	public BlackjackDeck(int noOfDecks) {
+		super(noOfDecks);
+		initalizeMappings();
 	}
 	
 	private void initalizeMappings(){

@@ -1,7 +1,5 @@
 package cardGame;
 
-import java.util.ArrayList;
-
 public class Player {
 
 	private Hand hand;
@@ -33,15 +31,24 @@ public class Player {
 		hand.draw(deck);
 	}
 
-	public void newHand() {
+	public void draw(Deck deck, int noOfCards) {
+		for (int i = 0; i < noOfCards; i++)
+			draw(deck);
+	}
+
+	public void discard() {
 		hand = new Hand();
 	}
-	
+
+	public void shuffleBack(Deck deck) {
+		hand.shuffleBack(deck);
+	}
+
 	public Hand getHand() {
 		return hand;
 	}
 
-	public ArrayList<Card> getHandArrayList() {
+	public Card[] getHandArrayList() {
 		return hand.getHand();
 	}
 
@@ -53,7 +60,7 @@ public class Player {
 		this.money += money;
 	}
 
-	public boolean getTurn() {
+	public boolean hasTurn() {
 		return turn;
 	}
 

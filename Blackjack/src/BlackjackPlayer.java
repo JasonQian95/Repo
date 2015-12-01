@@ -5,6 +5,7 @@ public class BlackjackPlayer extends Player {
 	private boolean bust = false;
 	private int insurance = 0;
 	private boolean bankrupt = true;
+	private boolean blackjack = false;
 
 	public BlackjackPlayer() {
 		super();
@@ -26,10 +27,13 @@ public class BlackjackPlayer extends Player {
 	}
 
 	public void checkBust() {
-		// TODO: fix?
 		int sum = 0;
 		int noOfAces = 0;
 		for (Card card : getHandArrayList()) {
+			/**
+			 * if (card.getRank() == 1) { noOfAces++; } sum +=
+			 * BlackjackGame.cardValues.get(card.getRank());
+			 **/
 			if (card.getRank() >= 2 && card.getRank() <= 10) {
 				sum += card.getRank();
 			}
@@ -50,16 +54,33 @@ public class BlackjackPlayer extends Player {
 			}
 		}
 
-		getHand().setSum(sum);
+		if (sum == 21) {
+			checkBlackjack();
+		}
 		if (sum > 21) {
 			bust = true;
+			sum = 0;
 		}
+		getHand().setSum(sum);
 	}
 
+	public boolean checkBlackjack() {
+		if (getHand().getSize() == 2
+				&& (getHand().contains(1, '*') && (getHand().contains(10, '*')
+						|| getHand().contains(11, '*')
+						|| getHand().contains(12, '*') || getHand().contains(
+						13, '*')))) {
+			return true;
+
+		}
+		return false;
+	}
+
+	/**
 	public void takeTurn() {
-		//ask for bet
-		while(getTurn()){
-			if (takeAction()){
+		// ask for bet
+		while (getTurn()) {
+			if (takeAction()) {
 				endTurn();
 			}
 		}
@@ -80,6 +101,7 @@ public class BlackjackPlayer extends Player {
 
 		public void stand();
 	}
+	**/
 
 	public boolean hit(Deck deck) {
 		draw(deck);
@@ -91,12 +113,12 @@ public class BlackjackPlayer extends Player {
 		this.bet = 2 * bet;
 		draw(deck);
 		checkBust();
-		return bust;
+		return true;
 	}
 
-	public boolean split(Deck deck) throws CannotSplitException {
+	public boolean split(Deck deck) {
 		if (getHand().getSize() != 2) {
-			throw new CannotSplitException();
+			System.out.println("Cannot split");
 		}
 		// TODO
 		return bust;
@@ -104,7 +126,7 @@ public class BlackjackPlayer extends Player {
 
 	public boolean insure() {
 		if (getHand().getSize() != 2) {
-			return;
+			return false;
 		}
 		insurance = this.bet / 2;
 		return false;
@@ -116,12 +138,22 @@ public class BlackjackPlayer extends Player {
 	}
 
 	public void drawNewHand(Deck deck) {
-		getHand().draw(deck, 2);
+		discard();
+		draw(deck, 2);
 	}
 
 	public void addMoney(int money) {
 		super.addMoney(money);
 		bankrupt = this.getMoney() > 0 ? false : true;
+	}
+
+	public void reset() {
+		discard();
+		checkBust();
+		bet = 0;
+		insurance = 0;
+		blackjack = false;
+		endTurn();
 	}
 
 	public int getBet() {
@@ -132,8 +164,8 @@ public class BlackjackPlayer extends Player {
 		this.bet = bet;
 	}
 
-	public int getInsurance() {
-		return insurance;
+	public boolean hasInsurance() {
+		return (insurance > 0);
 	}
 
 	public boolean getBankrupt() {
@@ -144,13 +176,7 @@ public class BlackjackPlayer extends Player {
 		return bust;
 	}
 
-	private class CannotSplitException extends Exception {
-
-		public CannotSplitException() {
-		}
-
-		public CannotSplitException(String message) {
-			super(message);
-		}
+	public boolean getBlackjack() {
+		return blackjack;
 	}
 }

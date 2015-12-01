@@ -28,26 +28,26 @@ import javax.swing.border.BevelBorder;
 public class Game implements KeyListener, ActionListener {
 
 	private static class Block extends Rectangle {
-		protected int baseValue;
-		protected int power;
-		protected int xPos, yPos;
-		protected static final int WIDTH = 50;
-		protected static final int HEIGHT = 50;
+		private int baseValue;
+		private int power;
+		private int xPos, yPos;
+		private static final int WIDTH = 50;
+		private static final int HEIGHT = 50;
 
-		Block(int value, int xPos, int yPos) {
+		private Block(int value, int xPos, int yPos) {
 			this.power = 0;
 			this.xPos = xPos;
 			this.yPos = yPos;
 		}
 
-		Block(int value, int xPos, int yPos, int baseValue) {
+		private Block(int value, int xPos, int yPos, int baseValue) {
 			this.power = 0;
 			this.xPos = xPos;
 			this.yPos = yPos;
 			this.baseValue = baseValue;
 		}
 
-		protected void combine(Block other) {
+		private void combine(Block other) {
 			if (this.power == 0) {
 				this.power = other.power;
 				other.power = 0;
@@ -58,7 +58,7 @@ public class Game implements KeyListener, ActionListener {
 			return;
 		}
 
-		public void repaint(Graphics g) {
+		private void repaint(Graphics g) {
 			//int colourVariable = 255 - (this.power * 50);
 			g.setColor(new Color(255, 255 / 4, 255 / 4, 3 * 256 / 4));
 			g.fillRect(this.xPos + 1, this.yPos + 1, Block.WIDTH - 2,
@@ -90,10 +90,10 @@ public class Game implements KeyListener, ActionListener {
 	}
 
 	private class Grid extends Rectangle {
-		protected int columns, rows;
-		protected Block[][] blocks;
+		private int columns, rows;
+		private Block[][] blocks;
 
-		Grid(int blockValues, int rows, int columns) {
+		private Grid(int blockValues, int rows, int columns) {
 			this.rows = rows;
 			this.columns = columns;
 			blocks = new Block[columns][rows];
@@ -106,7 +106,7 @@ public class Game implements KeyListener, ActionListener {
 			generateNewBlock();
 		}
 
-		protected void generateNewBlock() {
+		private void generateNewBlock() {
 			ArrayList<Block> emptyBlocks = new ArrayList<Block>();
 			for (Block[] column : blocks) {
 				for (Block block : column) {
@@ -123,7 +123,7 @@ public class Game implements KeyListener, ActionListener {
 			return;
 		}
 
-		protected void shiftLeft() {
+		private void shiftLeft() {
 			for (int iteration = 0; iteration < columns - 1; iteration++) {
 				for (int i = 0; i < columns - 1; i++) {
 					for (int j = 0; j < rows; j++) {
@@ -134,7 +134,7 @@ public class Game implements KeyListener, ActionListener {
 			generateNewBlock();
 		}
 
-		protected void shiftRight() {
+		private void shiftRight() {
 			for (int iteration = 0; iteration < columns - 1; iteration++) {
 				for (int i = columns - 1; i > 0; i--) {
 					for (int j = 0; j < rows; j++) {
@@ -145,7 +145,7 @@ public class Game implements KeyListener, ActionListener {
 			generateNewBlock();
 		}
 
-		protected void shiftUp() {
+		private void shiftUp() {
 			for (int iteration = 0; iteration < rows - 1; iteration++) {
 				for (int i = 0; i < columns; i++) {
 					for (int j = 0; j < rows - 1; j++) {
@@ -156,7 +156,7 @@ public class Game implements KeyListener, ActionListener {
 			generateNewBlock();
 		}
 
-		protected void shiftDown() {
+		private void shiftDown() {
 			for (int iteration = 0; iteration < rows - 1; iteration++) {
 				for (int i = 0; i < columns; i++) {
 					for (int j = rows - 1; j > 0; j--) {
@@ -167,7 +167,7 @@ public class Game implements KeyListener, ActionListener {
 			generateNewBlock();
 		}
 
-		public void repaint(Graphics g) {
+		private void repaint(Graphics g) {
 			for (int i = 0; i < columns; i++) {
 				for (int j = 0; j < rows; j++) {
 					g.drawRect(i * Block.WIDTH, j * Block.HEIGHT, Block.WIDTH,
@@ -185,26 +185,25 @@ public class Game implements KeyListener, ActionListener {
 		}
 	}
 
-	static int blockValue = 2;
-	static int rows = 4;
-	static int columns = 4;
-	int width;
-	int height;
-	DrawingPanel drawingPanel;
-	Grid grid;
-	static final Font font = new Font("Georgia", Font.BOLD, 18);
+	private static int blockValue = 2;
+	private static int rows = 4;
+	private static int columns = 4;
+	private int width;
+	private int height;
+	private DrawingPanel drawingPanel;
+	private Grid grid;
+	private static final Font font = new Font("Georgia", Font.BOLD, 18);
 
-	protected static Game game;
-	protected JFrame window;
-	protected static final int LOSS = -1;
-	protected static final int WIN = 1;
-	protected boolean showPower = false;
+	private static Game game;
+	private JFrame window;
+	private static final int LOSS = -1;
+	private static final int WIN = 1;
+	private boolean showPower = false;
 
 	Game() {
 		window = new JFrame("2048");
 		window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		window.setLayout(new BorderLayout());
-		// Container content = getContentPane();
 
 		Dimension screen = Toolkit.getDefaultToolkit().getScreenSize();
 		window.setLocation((screen.width - width) / 2,
@@ -350,7 +349,6 @@ public class Game implements KeyListener, ActionListener {
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		game = new Game();
-		return;
 	}
 
 	public void keyPressed(KeyEvent e) {

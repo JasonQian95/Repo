@@ -1,4 +1,5 @@
 package cardGame;
+
 import java.util.ArrayList;
 
 public class Deck {
@@ -8,6 +9,7 @@ public class Deck {
 			"9", "10", "J", "Q", "K", "A" };
 	static final char[] suits = { 'S', 'H', 'D', 'C' };
 	private char[] ordering = suits;
+	private int noOfDecks = 1;
 	static final int deckSize = 52;
 	private ArrayList<Card> deck;
 
@@ -20,13 +22,28 @@ public class Deck {
 		}
 	}
 
+	public Deck(int noOfDecks) {
+		this.noOfDecks = noOfDecks;
+		deck = new ArrayList<Card>(noOfDecks*deckSize);
+		for (int i = 0;i<noOfDecks;i++){
+		for (int rank : ranks) {
+			for (char suit : suits) {
+				deck.add(new Card(rank, suit));
+			}}
+		}
+	}
+
 	public Card draw() {
-		return deck.remove(deck.size());
+		return deck.remove(deck.size() - 1);
+	}
+
+	public void addCard(Card card) {
+		deck.add((int) Math.random() * noOfDecks * deckSize, card);
 	}
 
 	public void shuffle() {
 		for (int i = 0; i < deckSize; i++) {
-			int cardToShuffle = (int) Math.random() * deckSize;
+			int cardToShuffle = (int) Math.random() * noOfDecks * deckSize;
 			Card tempCard = deck.get(i);
 			deck.set(i, deck.get(cardToShuffle));
 			deck.set(cardToShuffle, tempCard);
@@ -40,7 +57,7 @@ public class Deck {
 	public void sortBySuit(String ordering) {
 		// TODO
 	}
-	
+
 	public void sortBySuit() {
 		// TODO
 	}

@@ -4,40 +4,32 @@ import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Toolkit;
-import java.awt.event.InputEvent;
-import java.awt.event.KeyEvent;
 
 import javax.swing.BorderFactory;
-import javax.swing.ButtonGroup;
-import javax.swing.JCheckBox;
 import javax.swing.JFrame;
-import javax.swing.JMenu;
-import javax.swing.JMenuBar;
-import javax.swing.JMenuItem;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
-import javax.swing.JRadioButton;
-import javax.swing.KeyStroke;
 import javax.swing.border.BevelBorder;
 
 public class Game {
 
-	int width;
-	int height;
-	DrawingPanel drawingPanel;
-	static final Font font = new Font("Georgia", Font.BOLD, 18);
+	private int width = 800;
+	private int height = 600;
+	private DrawingPanel drawingPanel;
+	private final Font font = new Font("Georgia", Font.BOLD, 18);
 
-	protected static Game game;
-	protected JFrame window;
+	private JFrame window;
+	private SinglePlayerGame blackjackGame = new SinglePlayerGame();
 
 	Game() {
 		window = new JFrame("Blackjack and Hookers");
 		window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		window.setLayout(new BorderLayout());
-		// Container content = getContentPane();
 
 		Dimension screen = Toolkit.getDefaultToolkit().getScreenSize();
 		window.setLocation((screen.width - width) / 2,
 				(screen.height - height) / 2 - 100);
+		window.setSize(width, height);
 
 		drawingPanel = new DrawingPanel();
 		drawingPanel.setBackground(new Color(255, 255, 255));
@@ -47,8 +39,7 @@ public class Game {
 		window.setContentPane(drawingPanel);
 		window.setResizable(false);
 		window.setVisible(true);
-
-		SinglePlayerGame blackjackGame = new SinglePlayerGame();
+		drawingPanel.repaint();
 	}
 	
 	private class DrawingPanel extends JPanel {
@@ -65,6 +56,22 @@ public class Game {
 	
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		game = new Game();
+		Game game = new Game();
+		while(true){ // Placeholder
+			game.blackjackGame.startTurnCycle();
+			for (BlackjackPlayer player: game.blackjackGame.getPlayers()){
+				player.giveTurn();
+				player.bet(Integer.parseInt(JOptionPane.showInputDialog(
+				        game.window, 
+				        "Enter bet", 
+				        "Bet", 
+				        JOptionPane.QUESTION_MESSAGE)));
+				while (player.hasTurn()){
+					
+				}
+			}
+			game.blackjackGame.dealerTurn();
+			game.blackjackGame.cleanUp();
+		}
 	}
 }

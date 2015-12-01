@@ -23,9 +23,15 @@ public class Hand {
 		hand.add(deck.draw());
 	}
 
-	public void draw(Deck deck, int number) {
-		for (int i = 0; i < number; i++) {
-			hand.add(deck.draw());
+	public void draw(Deck deck, int noOfCards) {
+		for (int i = 0; i < noOfCards; i++) {
+			draw(deck);
+		}
+	}
+
+	public void shuffleBack(Deck deck) {
+		for (Card card : hand) {
+			deck.addCard(card);
 		}
 	}
 
@@ -49,8 +55,30 @@ public class Hand {
 		// TODO
 	}
 
-	public ArrayList<Card> getHand() {
-		return hand;
+	public Card[] getHand() {
+		Card[] handAsArray = new Card[hand.size()];
+		handAsArray = hand.toArray(handAsArray);
+		return handAsArray;
+	}
+
+	public boolean contains(Card card) {
+		return hand.contains(card);
+	}
+
+	public boolean contains(int rank, char suit) {
+		if (!((rank >= 1) && (rank <= 13))) {
+			if ("CDHS".indexOf(suit) >= 0) {
+				return contains(new Card(rank, suit));
+			}
+			if (suit == '*') {
+				for (Card card : hand) {
+					if (card.getRank() == rank) {
+						return true;
+					}
+				}
+			}
+		}
+		return false;
 	}
 
 	public int getSize() {
