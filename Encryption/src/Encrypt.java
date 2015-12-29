@@ -34,18 +34,19 @@ public class Encrypt {
 		StringBuffer encryptStr = new StringBuffer(str);
 		while (key > 0) {
 			int digit = key % 10;
-			key /=  10;
+			key /= 10;
 			for (int i = digit; i < str.length(); i += digit) {
 				if (digit != 9 && digit != 0) {
 					if (digit % 2 == 0) {
 						int bit = 1 << (digit - 1);
-						encryptStr.setCharAt(i, (char) (encryptStr.charAt(i) ^ bit));
+						encryptStr.setCharAt(i,
+								(char) (encryptStr.charAt(i) ^ bit));
 					} else if (digit % 2 == 1) {
 						int leftBits = 0 | encryptStr.charAt(i);
-						leftBits = leftBits >> (16 - digit);
-						encryptStr.setCharAt(i, (char) (encryptStr.charAt(i) << digit));
-						//int firstEightBits = (int) (Math.pow(2, 8) - 1);
-						//encryptStr.setCharAt(i, (char) (encryptStr.charAt(i) & firstEightBits));
+						leftBits = leftBits >> (16 - (8 - digit));
+						encryptStr.setCharAt(i,
+								(char) (encryptStr.charAt(i) << digit));
+						// encryptStr.setCharAt(i, (char) (encryptStr.charAt(i) & 127));
 						encryptStr.setCharAt(i,
 								(char) (encryptStr.charAt(i) | leftBits));
 					}
@@ -54,28 +55,29 @@ public class Encrypt {
 		}
 		return encryptStr.toString();
 	}
-	
+
 	public static String decrypt(String str, int key) {
 		StringBuffer decryptStr = new StringBuffer(str);
 		ArrayList<Integer> digits = new ArrayList<Integer>();
 		while (key > 0) {
 			int digit = key % 10;
-			key /=  10;
+			key /= 10;
 			digits.add(0, digit);
 		}
-		for (int i = 0; i < digits.size(); i++){
+		for (int i = 0; i < digits.size(); i++) {
 			int digit = digits.get(i);
 			for (int j = digit; j < str.length(); j += digit) {
 				if (digit != 9 && digit != 0) {
 					if (digit % 2 == 0) {
 						int bit = 1 << (digit - 1);
-						decryptStr.setCharAt(j, (char) (decryptStr.charAt(j) ^ bit));
+						decryptStr.setCharAt(j,
+								(char) (decryptStr.charAt(j) ^ bit));
 					} else if (digit % 2 == 1) {
 						int rightBits = 0 | decryptStr.charAt(j);
-						rightBits = rightBits << (16 - digit);
-						decryptStr.setCharAt(j, (char) (decryptStr.charAt(j) >> digit));
-						//int firstEightBits = (int) (Math.pow(2, 8) - 1);
-						//decryptStr.setCharAt(j, (char) (decryptStr.charAt(j) & firstEightBits));
+						rightBits = rightBits << (16 - 8 - digit);
+						decryptStr.setCharAt(j,
+								(char) (decryptStr.charAt(j) >> digit));
+						// decryptStr.setCharAt(j, (char) (decryptStr.charAt(j) & 127));
 						decryptStr.setCharAt(j,
 								(char) (decryptStr.charAt(j) & rightBits));
 					}
@@ -83,6 +85,14 @@ public class Encrypt {
 			}
 		}
 		return decryptStr.toString();
+	}
+
+	public static String toAscii(String str) {
+		StringBuffer asciiStr = new StringBuffer(str);
+		for (int i = 0; i < asciiStr.length(); i++) {
+			asciiStr.setCharAt(i, (char) (asciiStr.charAt(i) & 127));
+		}
+		return asciiStr.toString();
 	}
 
 	public static void main(String[] args) {
@@ -97,16 +107,13 @@ public class Encrypt {
 				+ generateRandomPrime());
 		System.out.print("Enter a key to encrypt with: ");
 		String keyLine = scanner.nextLine();
-		int key;
-		if (keyLine.compareTo("") == 0) {
-			key = defaultKey;
-		} else {
-			key = Integer.parseInt(keyLine);
-		}
+		int key = keyLine.compareTo("") == 0 ? defaultKey : Integer
+				.parseInt(keyLine);
 
 		String encryptedString = encrypt(input, key);
-		System.out.println("Encrypted string is: " + encryptedString);
-		System.out.println("Decrypted string is: " + decrypt(encryptedString, key));
+		System.out.println("Encrypted string is: " + toAscii(encryptedString));
+		System.out.println("Decrypted string is: "
+				+ toAscii(decrypt(encryptedString, key)));
 
 		scanner.close();
 	}
