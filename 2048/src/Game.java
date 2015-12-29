@@ -1,3 +1,4 @@
+import java.applet.Applet;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
@@ -10,6 +11,7 @@ import java.awt.event.ActionListener;
 import java.awt.event.InputEvent;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.io.IOException;
 import java.util.ArrayList;
 
 import javax.swing.BorderFactory;
@@ -25,7 +27,7 @@ import javax.swing.JRadioButton;
 import javax.swing.KeyStroke;
 import javax.swing.border.BevelBorder;
 
-public class Game implements KeyListener, ActionListener {
+public class Game extends Applet implements KeyListener, ActionListener {
 
 	private static class Block extends Rectangle {
 		private int baseValue;
@@ -59,7 +61,7 @@ public class Game implements KeyListener, ActionListener {
 		}
 
 		private void repaint(Graphics g) {
-			//int colourVariable = 255 - (this.power * 50);
+			// int colourVariable = 255 - (this.power * 50);
 			g.setColor(new Color(255, 255 / 4, 255 / 4, 3 * 256 / 4));
 			g.fillRect(this.xPos + 1, this.yPos + 1, Block.WIDTH - 2,
 					Block.HEIGHT - 2);
@@ -349,6 +351,14 @@ public class Game implements KeyListener, ActionListener {
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		game = new Game();
+	}
+
+	public void init() {
+		try {
+			game = new Game();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 	}
 
 	public void keyPressed(KeyEvent e) {
