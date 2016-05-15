@@ -1,0 +1,71 @@
+<html>
+<head>
+	<title>Profile</title>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+	<link rel="stylesheet" href="http://semantic-ui.com/dist/semantic.min.css"/>
+	<script src="http://semantic-ui.com/dist/semantic.min.js"></script>
+	<script src="http://patrickgawron.com/wp/wp-content/uploads/2013/11/jquery.address.js"></script>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="HandheldFriendly" content="true" />
+	<meta charset="UTF-8">
+	  <style type="text/css">
+	  body{
+	  	margin:10px 40px 0 40px;
+	  }
+
+	  </style>
+	 
+</head>
+
+
+	<body>	
+	<!--nav bar-->
+	<div id="menu" class="ui red menu">
+	  	<div class="ui container">
+		    <a class="active item" href="/home">Home</a>
+		    <a class="item" href="/trucklist">Order Now!</a>
+            <div class="item">
+	          <form class="ui action input" action='/search' method="POST">
+	            <input type="text" name='keyword' placeholder="Search food or type">
+	            <input class="ui teal button" type='submit' value='Search'></input>
+	          </form>
+	        </div>
+		    <div class="right menu">
+		      <div class="item">
+		        Welcome! <%= user.username %>
+		      </div>
+		      <div class="item">
+		        <a class="ui primary button" href="/logout">Log out</a>
+		      </div>
+		    </div>
+		 </div>
+	</div>	
+
+	<!--user's profile-->
+		<div id="card" class="ui centered card">
+		  <div class="image">
+		    <img src="http://semantic-ui.com/images/avatar2/large/elyse.png">
+		  </div>
+		  <div class="content">
+		    <div class="ui red inverted center aligned segment"><%= user.username %></div>
+		    	<!--check if user is the truck-->
+		        <% if (user.truck.name) { %>
+					<div class="ui blue center aligned segment">
+					   	<p>Name: <%= user.truck.name %></p>
+					    <p>Address: <%= user.truck.address %></p>
+					    <p>Hours of operation: <%= user.truck.hours %></p>
+					    <p>Phone#: <%= user.truck.phone %></p>
+					    <p>Food type: <%= user.truck.type_of_food %></p>
+					</div>
+				<% } %>
+		        <a class="ui green bottom attached button" href="/profile/edit">
+			    <i class="add icon"></i>EDIT</a>
+			    <a class="ui blue bottom attached button" href="/orders">
+			    <i class="add icon"></i>History of Transaction</a>
+			    <p id='chris'></p>
+		 </div>
+	</div>
+	
+	</body>
+
+</html>	

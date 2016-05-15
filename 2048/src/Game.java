@@ -354,11 +354,7 @@ public class Game extends Applet implements KeyListener, ActionListener {
 	}
 
 	public void init() {
-		try {
-			game = new Game();
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
+		game = new Game();
 	}
 
 	public void keyPressed(KeyEvent e) {
