@@ -1,0 +1,80 @@
+#wrapper{
+    position: relative;
+    overflow: hidden;
+}
+
+#startPage{
+    position: relative;
+    border: 5px solid black;
+    margin: 200px auto;
+    text-align: center;
+    height: 250px;
+    width: 300px;
+    display: block;
+    background-color: #3BB9FF; 
+}
+
+#startButton{
+    border: 2px solid black;
+    height = 10px;
+    margin: 10px;
+    background-color: white;
+    font-size: Large;
+}
+
+#infoBar{
+    width: 400px;
+    height: 50px;
+    border-bottom: 5px solid black;
+    text-align: center;
+    background-color: lightgray;
+}
+
+#infoBar>div {
+    display: inline-block;
+    margin-right: 20px;
+    margin-left: 20px;
+}
+
+#gamePage{
+    border: 10px solid black;
+    margin: 120px auto;
+    width: 400px;
+    height: 650px;
+    display: none;
+    background-color: #3BB9FF;
+}
+
+#pauseButton{
+    position: relative;
+    top: 50%;
+    padding-right: 5px;
+    padding-left: 5px;
+    border: 1px solid black;
+    margin: 10px;
+    width: 50px;
+    background-color: white;
+}
+
+#gameOverPage{
+    width: 150px;
+    height: 50px;
+    border: 2px solid black;
+    margin: auto;
+    padding: 30px;
+    background-color: lightgray;
+    position: relative;
+    top: -400px;
+    display: none;
+    text-align: center;
+    font-size: Large;
+}
+
+#endScore{
+    position: relative;
+    margin: auto;
+}
+
+#viewPortCanvas {
+	
+}

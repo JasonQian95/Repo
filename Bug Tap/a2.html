@@ -1,0 +1,49 @@
+<!DOCTYPE html> <!-- we are using html5, so this is enough -->
+	<!-- Use this as a wapper to control dimensions of the whole page -->
+	<head>
+		<meta charset="utf-8">
+		<link rel="stylesheet" type="text/css" href="a2-style.css">
+		<script language="javascript" type="text/javascript" src="a2-game.js"></script> 
+		<title>Tap Tap Game</title>
+	</head>
+	<body>
+		<div id="wrapper">
+			<section id="startPage">	
+				<header>
+					<h1>Tap Tap Game</h1>
+				</header>
+				<form id="levelForm">
+					<h2>Choose a level </h2>
+					<input id="levelOne" type="radio" name="radButton-level" value="1" checked="checked" />1
+					<input id="levelTwo" type="radio" name="radButton-level" value="2"/>2<br/>				
+				</form>
+                <p id="highScore"></p>
+				<button type="button" id="startButton">Start Game</button>	
+			</section>
+			<section id="gamePage">
+				<div id="infoBar">
+			    	<div id="timer">
+			   			<p id="timeLeft"></p>
+			    	</div>
+			    	<div>
+				    	<div id="pauseButton">Pause</div>
+				    </div>
+			    	<div>
+			    		<p id="displayScore"></p>
+			    	</div>
+			    </div>
+			    <div id="viewPort">
+			    	<canvas id="viewPortCanvas" width="400" height="600">
+						Your browser does not support the HTML5 canvas tag.
+					</canvas>
+			    </div>
+			    <div id="gameOverPage">
+				    <p id="endScore"></p>
+                    <button type="button" id="restartButton">Restart</button>
+                    <button type="button" id="exitButton">Exit</button>
+					</div>
+			    </div>
+	    	</section>
+		</div>
+	</body>
+</html>
