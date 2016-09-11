@@ -1,0 +1,90 @@
+
+1.  Log into one of the workstations in rooms BA 2220 
+(plus others, to be announced as renovations progress).
+To have permissions to run the virtual machine, you have to
+log in at the graphical console; a remote login (ssh or the
+like) isn't good enough.
+
+
+2.  Open a terminal window and give the command
+
+        cvm csc369
+
+If this is the first time you've used the VM, there may be a few 
+seconds of delay and a message about formatting your personal VM 
+disk. You do not need to press anything, even if you potentially
+see a message prompting you to do so.
+
+
+3.  A new window will pop up showing the VM console.  It will
+print various bootstrapping messages, may spend a few seconds
+showing a blank white or blank screen, and may change its size
+a few times; all this is normal as the OS boots within
+the virtual machine.  
+When it's ready to use, the screen will print an OS version and 
+display a "login:" prompt.
+
+
+4.  At this point, you should be able to log in at the console 
+using the following credentials:
+username: student
+password: kernel369
+
+In the home folder, please notice that there is a script called
+"SetupKeys.sh" - it is important that you run this each time you
+start the VM, otherwise you might find the default key bindings 
+quite difficult to use. Running this script will ask you for the
+password above, since it needs sudo rights. 
+
+To transfer files or ssh from or to the VM, you can do the following:
+- from the host where the VM is running, you can ssh into the VM as 
+follows:
+    ssh -p 8022 student@localhost
+- from the VM, you can ssh to your CDF account (or scp files back and 
+forth), as follows:
+    ssh youruser@cdf.toronto.edu
+    scp local_file_to_transfer youruser@cdf.toronto.edu:path_to_transfer_files_to
+    scp youruser@cdf.toronto.edu:path_to_transfer_files_from local_destination
+
+
+IMPORTANT:
+Since you operate at the kernel level, each time your test your code
+there is a chance you will crash the kernel. In most cases, simply 
+rebooting the VM will be sufficient, but there is no guarantee that 
+your code will not get lost or left in an old state. Please make sure
+to backup your code periodically when you work on the assignment.
+
+ 
+5.  Other things you should know:
+
+-- When you log off the CDF workstation, any running virtual
+machine will be killed automatically.  This is an abrupt kill,
+like pulling out the power plug on a real system.  It is better
+to shut the VM down cleanly instead, by logging in, running
+        sudo poweroff
+and waiting for the VM-console window to disappear.
+
+-- If you use the VM console window, your keyboard and mouse may
+get stuck in there.  To unstick them, press your keyboard's left-
+hand CTRL and ALT keys at the same time.
+
+-- There is one copy of the VM associated with your CDF account.
+You'll get the same one, with the same virtual disk, no matter which
+workstation you log into.
+
+-- Don't run the VM more than once at the same time; if you do,
+you'll likely end up with a scrambled, corrupt virtual disk.
+There is some simple protection to try to keep you from doing
+this by accident but it doesn't yet detect if you do it on two
+different workstations.  So don't!
+
+-- If the VM's file system gets hopelessly screwed up (maybe
+because of a system crash), as a last resort you can start
+over from scratch by running
+
+        cvm -DESTROY csc369
+
+Doing this will throw away, forever and with no backup, anything
+that has changed in your copy of the VM since the beginning.
+You probably don't want to do this, but here it is if you need it.
+

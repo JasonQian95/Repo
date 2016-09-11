@@ -1,0 +1,28 @@
+ Jason Qian - g5jasonq
+ Charles Li - g6lichar
+ Sebastian Botero Gutierrez - g5botero
+ 
+ CODE EXPLANATION:
+ ext2_cp has a segfault
+ 
+ ext2_mkdir 
+	Pro:
+	- Implemented features for finding a free block and a free node for the directory
+	- Initiated node with correct values
+	- Initiated directory entry with correct values and made sure size is 4B aligned
+	- Found an location in the parent directory to store the new directory to be created
+	- Placed the new directory in its correct location and made the necessary adjustments regarding the size of the affected directory entries
+	- Handled single indirection when looking for a location to store the new directory
+	- Created “.” and “..” directory entries and placed it within the data block for the new directory entry 
+	
+	Con:
+	- It doesn’t work because it has an infinite loop that stems from rec_len being 0 when we read it from directory entry
+	
+ ext2_cp
+	Pro:
+	- Able to do what was mentioned in ext2_mkdir plus copying data into free blocks on the img file
+	
+	Con:
+	- ext2_cp has a segfault that most likely stems from the same infinite loop code which we reused from ext2_mkdir. 
+	
+
