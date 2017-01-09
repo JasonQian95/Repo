@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_tab"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="0dp"
+    android:paddingRight="0dp"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    android:background="@color/colorTabHost"
+    android:fitsSystemWindows="true"
+    tools:context="com.team_05.kiddo.TabActivity">
+
+    <TextView
+        android:text="CSC301"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/headerHeight"
+        android:id="@+id/classTextView"
+        android:layout_weight="1"
+        android:background="@color/colorPrimary"
+        android:textAlignment="center"
+        android:textColor="@color/colorAccent"
+        android:textSize="@dimen/headerFontSize"
+        android:gravity="center"
+        android:fontFamily="@string/headerFont"/>
+
+    <ImageButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:srcCompat="@drawable/ic_settings_black_24dp"
+        android:id="@+id/settingsImageButton"
+        android:backgroundTint="@color/colorPrimary"
+        android:layout_alignBottom="@+id/classTextView"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginRight="5dp"
+        android:tint="@color/colorAccent" />
+
+    <TabHost
+        android:id="@+id/tabHost"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/classTextView">
+
+        <LinearLayout
+            android:id="@+id/line"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <TabWidget
+                android:id="@android:id/tabs"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+            </TabWidget>
+
+            <FrameLayout
+                android:id="@android:id/tabcontent"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <include
+                    android:id="@+id/announcements"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    layout="@layout/tab_announcements"></include>
+
+                <include
+                    android:id="@+id/students"
+                    android:layout_height="match_parent"
+                    android:layout_width="match_parent"
+                    layout="@layout/tab_students"></include>
+
+                <include
+                    android:id="@+id/groupMessage"
+                    android:layout_height="match_parent"
+                    android:layout_width="match_parent"
+                    layout="@layout/tab_group_message"></include>
+
+                <include
+                    android:id="@+id/calendar"
+                    android:layout_height="match_parent"
+                    android:layout_width="match_parent"
+                    layout="@layout/tab_calendar"></include>
+
+                <include
+                    android:id="@+id/enrolmentRequests"
+                    android:layout_height="match_parent"
+                    android:layout_width="match_parent"
+                    layout="@layout/tab_enrolment_requests"></include>
+
+            </FrameLayout>
+        </LinearLayout>
+    </TabHost>
+
+    <ImageButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:srcCompat="@drawable/ic_arrow_back_black_24dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:id="@+id/backImageButton"
+        android:background="@color/colorPrimary"
+        android:tint="@color/colorAccent"
+        android:layout_alignTop="@+id/classesTextView"
+        android:layout_marginLeft="5dp"
+        android:layout_marginTop="7dp"/>
+
+</RelativeLayout>

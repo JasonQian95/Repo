@@ -1,0 +1,30 @@
+Introduction (~30s)
+------------
+
+We are building an Android app to faciliate easier communication between teachers and parents. 
+Teachers can use our app to post class and  student-specific updates to parents. 
+Parents can view these updates in the app and follow-up with the teachers via a private chat.
+The admin is in charge of managing teacher accounts and classes.
+We will demo the main workflow of the parent user and discuss the other 2 user types, teacher and admin.
+
+Parent Demo
+------------
+A parent can sign up for an account to use this application. 
+Once they have signed up, they are able to log in to their account, where they can associate their children to their account, and then enrol in classes that their children attend. 
+Afterwards, clicking their child will display the classes and a calendar with upcoming events that the child is involved in.
+Clicking a class will lead to a page with announcements that the class teacher has posted. These announcements may be reminders, notifications of emergencies, or text and photo updates of interesting things happening in that class. Because there may be a lot of announcements, there is a function for the parent user to view only the announcements for a certain month. Clicking an announcement will lead to a display of announcement details. 
+The messaging feature provides a way for parents to contact the teacher, and for teachers to respond or send text and photo updates specifically of the child to the parent. 
+Parents can change their account password or sign out anytime they want. 
+
+Teacher
+Teachers have an interface where they are in charge of enrolment requests from parents to join their class to ensure that strangers do not have free access. This is also the interface that allows teachers to put events into a calendar, post announcements, and send messages to parents. 
+
+Admin (15s)
+The admin can view (manage teachers screen), invite teachers to create an account (teacher invite screen), and delete teacher accounts (view teacher screen).
+Similarly, the admin can view (manage classes screen), create (create class screen) and delete classes (view class screen).
+
+Conclusion
+----------
+That concludes the demo. We saw the main workflow of the parent user and discussed the features in the teacher and admin user types. 
+We have completed most of the 3 user interfaces and we plan to concentrate on building the back-end functionality. 
+We will finish linking our app to a database and writing the java classes required to manipulate the data.

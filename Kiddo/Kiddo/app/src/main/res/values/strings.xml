@@ -1,0 +1,97 @@
+<resources>
+    <string name="app_name">Kiddo</string>
+    <string name="textFieldFont">sans-serif-smallcaps</string>
+    <string name="headerFont">sans-serif-smallcaps</string>
+    <string name="title_activity_tab">TabActivity</string>
+    <string name="action_settings">Settings</string>
+    <string name="normalTextFont">sans-serif-smallcaps</string>
+
+    <!--Choose daycare/school drop menu-->
+    <string name="school_prompt">Choose your daycare or school</string>
+    <string-array name="school_arrays">
+        <item>DayCare 1</item>
+        <item>Daycare 2</item>
+        <item>Daycare 3</item>
+        <item>School 1</item>
+        <item>School 2</item>
+    </string-array>
+
+    <!--Terms and Conditions-->
+    <string name="terms_and_conditions">Please read these Terms and Conditions carefully before
+        using the Kiddo android application.\n\n
+
+        Your access to and use of Kiddo is conditioned on your acceptance of these Terms. These
+        Terms apply to all visitors, users, and others who access or use our service.\n\n
+
+        By accessing or using Kiddo, you agree to be bound by these Terms. If you disagree with any
+        part of the terms then you may not access the service.\n\n\n
+
+        Terms and Conditions of use:\n\n
+
+        You agree to be responsible for maintaining the confidentiality of your password and other
+        account identifiers and all activities that occur under your account.\n\n\n
+
+        By registering to our application, you agree that:\n\n
+
+        The full name, class names and teacher names of your child or children, and your own name
+        will be provided to our service. We will not use any of this information other than to
+        serve the functionality of our application. This information will not be provided to any
+        third parties outside of our application.\n\n
+
+        The name(s) of a child and children that you input into this application are indeed the
+        name(s) of your own children that attend the daycare or school that you have stated.\n\n\n
+
+        Termination:\n\n
+
+        We may terminate or suspend access to our service without prior notice or liability, for
+        any reason whatsoever, including but without limitation if you breach the Terms.\n
+
+        All provisions of the Terms which by their nature should surive termination shall survive
+        termination. \n\n</string>
+
+    <!--Registration confirmation screen text-->
+    <string name="confirmation1">Here are your login details:</string>
+    <string name="confirmation_login">Email: johnsmith@email.com\nPassword: Abcd1234</string>
+    <string name="change_password">(You will have the option to change your password at any time
+        when using this application</string>
+    <string name="confirmation_info">Your information:\nFirst name: John\nLast name: Smith</string>
+    <string name="confirmation_done">Your registration is now complete. Click the "done" button
+        to login and begin using the app.</string>
+
+    <string name="add_child_prompt">Please enter the name of your child exactly as it is registered
+        in your daycare/school records:</string>
+    <string name="title_activity_parent_tab1">ParentTab1Activity</string>
+    <string name="section_format">Hello World from section: %1$d</string>
+    <string name="title_activity_admin_teacher_details">AdminTeacherDetails</string>
+
+    <!--Choose month drop menu-->
+    <string name="month_prompt">Choose month</string>
+    <string-array name="month_arrays">
+        <item>January 2016</item>
+        <item>February 2016</item>
+        <item>March 2016</item>
+        <item>April 2016</item>
+        <item>May 2016</item>
+        <item>June 2016</item>
+        <item>July 2016</item>
+        <item>August 2016</item>
+        <item>September 2016</item>
+        <item>October 2016</item>
+        <item>November 2016</item>
+    </string-array>
+    <string name="title_activity_admin_manage_classes">AdminManageClasses</string>
+
+    <string name="anouncement_details">Full Announcement:\n
+        Permission slips are due tomorrow for the class trip to see Matilda. \n
+        Just a reminder of the details for the trip - the showing of Matilda will be at 1:00PM
+        on November 23rd at Xxxxx Theatre.\n\n
+
+        Date posted: Sat Nov 12\n
+        Time posted: 2:13 PM</string>
+
+    <string name="event_details">Science Fair\n\n
+        Fri December 9 11:00AM\n\n
+        Location: Main Playground\n\n
+        Children will be showing off the science projects that have been
+        working on, and there will be an opportunity for children to look at each other\'s projects.</string>
+</resources>

@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_admin_update_info"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context="com.team_05.kiddo.AdminUpdateInfo">
+
+    <TextView
+        android:text="Update Info"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/headerHeight"
+        android:id="@+id/menuTextView"
+        android:background="@color/colorRed"
+        android:fontFamily="@string/headerFont"
+        android:textColor="@color/colorAccent"
+        android:textSize="@dimen/headerFontSize"
+        android:textAlignment="center"
+        android:gravity="center"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="textPersonName"
+        android:hint="New Password"
+        android:ems="10"
+        android:id="@+id/editText2"
+        android:layout_below="@+id/editText"
+        android:layout_alignLeft="@+id/editText"
+        android:layout_alignStart="@+id/editText"
+        android:textColor="@color/colorGrey"
+        android:background="@android:color/transparent"/>
+
+    <Button
+        android:text="Cancel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/cancelButton"
+        android:background="@color/colorPrimary"
+        android:textColor="@color/colorWhite"
+
+        android:paddingLeft="70dp"
+        android:paddingRight="70dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <Button
+        android:text="Update"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/updateButton"
+        android:background="@color/colorPrimary"
+        android:textColor="@color/colorWhite"
+        android:paddingLeft="80dp"
+        android:paddingRight="80dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="textPersonName"
+        android:hint="New Email"
+        android:ems="10"
+        android:layout_marginTop="35dp"
+        android:id="@+id/editText"
+        android:textColor="@color/colorGrey"
+        android:background="@android:color/transparent"
+        android:layout_below="@+id/instructions"
+        android:layout_centerHorizontal="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="If you are updating only one field, leave the other blank."
+        android:ems="10"
+        android:layout_marginTop="88dp"
+        android:id="@+id/instructions"
+        android:textSize="18sp"
+        android:layout_below="@+id/menuTextView"
+        android:layout_alignLeft="@+id/editText2"
+        android:layout_alignStart="@+id/editText2" />
+
+</RelativeLayout>

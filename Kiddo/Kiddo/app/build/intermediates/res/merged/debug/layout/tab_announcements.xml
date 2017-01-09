@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorAccent"
+    android:focusable="true"
+    android:focusableInTouchMode="true">
+
+    <ImageButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:srcCompat="@drawable/ic_send_black_24dp"
+        android:id="@+id/sendImageButton"
+        android:layout_alignParentBottom="true"
+        android:layout_marginRight="10dp"
+        android:layout_alignParentEnd="true"
+        android:layout_marginBottom="5dp"
+        android:background="@color/colorAccent"
+        android:tint="@color/colorPrimary"/>
+
+    <ImageButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:srcCompat="@drawable/ic_photo_camera_black_24dp"
+        android:layout_alignTop="@+id/sendImageButton"
+        android:layout_toLeftOf="@+id/sendImageButton"
+        android:layout_toStartOf="@+id/sendImageButton"
+        android:id="@+id/cameraImageButton"
+        android:background="@color/colorAccent"
+        android:tint="@color/colorPrimary"/>
+
+    <EditText
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:inputType="textPersonName"
+        android:ems="10"
+        android:id="@+id/announcementsTextField"
+        android:background="@color/colorAccent"
+        android:textColor="@color/colorPrimaryDark"
+        android:fontFamily="@string/textFieldFont"
+        android:hint="New announcement"
+        android:layout_alignTop="@+id/cameraImageButton"
+        android:layout_toLeftOf="@+id/cameraImageButton"
+        android:layout_toStartOf="@+id/cameraImageButton"
+        android:layout_marginRight="13dp"
+        android:layout_marginEnd="13dp"
+        android:layout_alignBottom="@+id/cameraImageButton" />
+
+    <ListView
+        android:id="@+id/announcementsListView"
+        android:layout_width="match_parent"
+        android:layout_height="400dp"
+        android:background="@color/colorAccent"
+        android:stackFromBottom="true"
+        android:transcriptMode="alwaysScroll"></ListView>
+
+</RelativeLayout>

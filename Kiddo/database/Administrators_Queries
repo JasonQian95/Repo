@@ -1,0 +1,34 @@
+1. Create Teachers Account
+
+INSERT INTO Teachers ('idTeacher', 'idSchool', 'email', 'uname', 'pass', 'fName', 'lName') 
+VALUES (idTeacher?, idSchool?, email?, uname?, pass?, fName?, lName?);
+
+1. Delete Teachers Account
+(Yes, we need delete, because we need a way to modify teacher table)
+
+DELETE FROM Teachers
+WHERE Teachers.idSchool = 'idSchool?' AND Teachers.idTeacher = 'idTeacher?'
+
+2. Display All Teachers From Same School
+
+SELECT fName , lName
+FROM Teachers
+WHERE Teachers.idSchool = 'idSchool?';
+
+2. Display All Classes From Same School
+
+SELECT * 
+FROM Teachers
+WHERE Teachers.idSchool = 'idSchool?';
+
+2. Display Admin information
+
+SELECT * 
+FROM Administrators
+WHERE Administrators.email = 'Administrators.email?'
+
+3. Allow Change Adamin Password
+
+UPDATE uname, pass
+FROM Administrators
+WHERE Administrators.email = 'Administrators.email?'

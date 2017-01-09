@@ -1,0 +1,37 @@
+/*_____________________________Classes__________________________________*/
+
+2. Display class information based calssID
+
+SELECT *
+FROM Classes
+WHERE Classes.idClass = 'Classes.idClass?';
+
+/*__________________________________Students______________________________*/
+
+
+SELECT *
+FROM Students
+WHERE Students.idStudent = 'Students.idStudent?';
+
+/*________________________________Events______________________________*/
+
+
+SELECT *
+FROM Events
+WHERE Events.idEvent = 'Events.idEvent?';
+
+
+/*__________________________________Messages______________________________*/
+
+
+SELECT *
+FROM Messages
+WHERE Messages.idMessage = 'Messages.idMessage?';
+
+
+/*_________________________________Announcements______________________________*/
+
+
+SELECT *
+FROM Announcements
+WHERE Announcements.idClass = 'Announcements.idClass?';

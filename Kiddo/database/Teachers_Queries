@@ -1,0 +1,70 @@
+1. Teacher Can Create an Event
+
+INSERT INTO Events ('idEvent', 'idClass', 'name', 'location', 'startTime', 'endTime', 'comments')
+VALUES ('idEvent?', 'idClass?', 'name?', 'location?', 'startTime?', 'endTime?', 'comments?')
+
+1. Teacher Can Remove an Event
+
+DELETE FROM Events
+WHERE Events.idClass = 'idClass?' AND Events.idEvent = 'idEvent?'
+
+1. Teacher Can Create an Announcement
+
+INSERT INTO Announcements ('postTime', 'idClass', 'title', 'body', 'media')
+VALUES ('postTime?', 'idClass?', 'title?', 'body?', 'media?');
+
+1. Teacher can create a class
+
+INSERT INTO Classes ('idClass', 'idSchool', 'idTeacher', 'name')
+VALUES ('idClass?', 'idSchool?', 'idTeacher?', 'name?');
+
+
+2. Display Teacher information
+
+SELECT * 
+FROM Teachers
+WHERE Teachers.idTeacher = 'Teachers.idTeacher?'
+
+
+2. Display all classes associate with teacher
+
+SELECT Classes.name 
+FROM Classes 
+WHERE Classes.idTeacher = Classes.idTeacher;
+
+2. Display all messages associate with teacher
+
+SELECT idMessage
+FROM Messages
+WHERE Messages.idSender = 'idTeacher' or Messages.idRecipient = 'idTeacher'
+
+3. Teacher Can Edit Calander Event
+
+UPDATE name, location, startTime, endTime, comments
+FROM Events
+WHERE Events.idClass = 'idClass?' AND Events.idEvent = 'idEvent?';
+
+3. Teacher can change their infomation
+
+UPDATE email, uname, pass
+FROM Teacher
+WHERE Teacher.idTeacher = 'idTeacher';
+
+/*___________________________Need to finish it_____________________________*/
+/*
+not finished, becuase of don't know how to add idclass to set of idclass 
+should we set idParent1 && idParent2 be primary key too? 
+since maybe 2 kids assoicate with one parent
+*/
+
+3. Add parents's kid to class
+
+UPDATE idClass
+FROM Students
+WHERE Students.idParent1 = 'idParent' OR Students.idParent2 = 'idParent';
+
+3. Remove parents's kid to class
+
+UPDATE idClass
+FROM Students
+WHERE Students.idParent1 = 'idParent' OR Students.idParent2 = 'idParent';

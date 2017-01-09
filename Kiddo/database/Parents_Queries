@@ -1,0 +1,26 @@
+How do you get idParent? I just gonna match emails instead.
+
+
+2. Display parents infomation
+
+SELECT *
+FROM Parents
+WHERE Parents.idParent = 'Parents.idParent?';
+
+2. Display parent kids
+
+SELECT Students.idStudent
+FROM Students, Parents
+WHERE Students.idParent1 = 'Parents.idParent' OR Students.idParent2 = 'Parents.idParent'
+
+2. Display all messages associate with parents
+
+SELECT idMessage
+FROM Messages
+WHERE Messages.idSender = 'idParent' or Messages.idRecipient = 'idParent';
+
+3. Allow Parents Change infomation
+
+UPDATE email, uname, pass
+FROM Parents
+WHERE Parents.idParent = 'idParent?';

@@ -1,0 +1,89 @@
+Based On Functionality of Each Table:
+____________________________________________________
+Query Type 1: Add/Remove data from table
+Query Type 2: Display info 
+Query Type 3: Edit one/a few data in the table.
+____________________________________________________
+Administrators:
+1. Create Teachers Account (*)
+* allow adamin adds a teacher into Teacher Table. 
+* idSchool is common key between admin and teacher.
+/idTeacher should be auto genertated /
+
+INSERT into Teachers (`email`, `uname`, `pass`, `fName`, `lName`) " +
+                "VALUES(?, ?, ?, ?, ?)
+
+1. Delete Teachers Account (*)
+* allow adamin removes a teacher into Teacher Table. 
+* idSchool is common key between admin and teacher.
+
+----Should we have this? You can't destroy objects in java so this could create a Teacher that isn't present in the database
+
+delete 
+from Teachers 
+where idSchool = (select idSchool from Administrators where email = ?) 
+and idTeacher = (select idTeacher from Teacher where email = ?)
+
+2. Display All Teachers From Same School (idSchool)
+* dispaly teachers with same idSchool.
+* idSchool is common key between admin and teacher.
+
+SELECT idSchool FROM Administrators where email = ?
+SELECT * FROM Teachers where idSchool = ?
+
+2. Display All Classes From Same School (idSchool)
+* dispaly class with same idSchool.
+* idSchool is common key between admin and class.
+
+SELECT idSchool FROM Administrators where email = ?
+SELECT * FROM Classes where idSchool = ?
+
+2. Display Admin information (idAdministrator) //I changed this from email to idAdministrator (Matthew)
+* include uname and email based on email. 
+
+select * 
+from Admin 
+where idAdministrator = ?
+
+3. Allow Change Adamin Password (pass) //??
+* only allow adamin change pass
+* modify adamin table data
+
+SELECT idSchool FROM Administrators where email = ?
+UPDATE Administrators SET uname = ?, pass = ? WHERE idSchool = ?
+
+Teachers
+3. Add parents's kid to class(parents.idStudent,student.idParent1/2,student.<idClass>)
+* assign parents' students class to given classID.
+* parents.idStudent <--> student.idParent1/2 --> student.<idClass>.
+
+3. Remove parents's kid to class(parents.idStudent,student.idParent1/2,student.<idClass>)
+
+* remove parents' students class to given classID.
+* parents.idStudent <--> student.idParent1/2 --> student.<idClass>.
+
+1. Create Events(name, location, startTime, endTime, comments)
+
+* create an event in Event Table
+
+1. Remove Events(name, location, startTime, endTime, comments)
+
+* delete an event in Event Table
+
+3. Edit Calander Event(name, location, startTime, endTime, comments)
+
+* edit event info
+
+update Events set name = ?, location = ?, startTime = ?, endTime = ?, comments = ? where idEvent 
+
+2. Display all classes associate with teacher (idTeacher)
+
+* Teacher.idTeacher <==> Classes.idTeacher
+
+select name from Classes where idTeacher = (select idTeacher from Teacher where email = ?)
+
+2. Display all messages associate with user(teacher) (idSender/idRecipient/idTeacher)
+
+* display all users' conversation.
+
+Parents:

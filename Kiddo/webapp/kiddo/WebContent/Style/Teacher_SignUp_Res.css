@@ -1,0 +1,129 @@
+@CHARSET "ISO-8859-1";
+
+html {
+	width: 100%;
+	height: 100%;
+	padding: 0;
+	margin: 0;
+	background: #456ab4;
+}
+
+body {
+	width: 100%;
+	height: 100%;
+	position: relative;
+	padding: 0;
+	margin: 0;
+	background: #dedede;
+}
+
+/* the main div of page under header*/
+body>#content {
+	width: 100%;
+	height: 38em;
+	background: #dedede;
+	border-top: 1px solid #888888;
+}
+
+#signupmessage {
+	color: #00004d;
+	font-weight: bold;
+}
+
+#topline {
+	border-bottom: 1px solid #dedede;
+}
+
+
+body>#content {
+	min-width: 62em;
+	padding-top: 6em;
+}
+	
+#signupdiv {
+	background: #ffffff;
+	height: 20em; /*----------*/
+	
+	margin: 2em auto;
+	border-radius: 15px;
+	border: 1px solid #a6a6a6;
+	box-shadow: 0px 5px 12px #888888;
+	width: 30em;
+}
+
+#signupmessage {
+	margin-left: 1.2em;
+	font: 1.1em Arial, Helvetica, sans-serif;
+	padding-bottom: .4em;
+}
+
+#topline {
+	width: 90%;
+	margin: -.9em 1.4em;
+}
+
+#info_tab{
+	margin: 1em auto;
+	
+}
+
+.lables{
+	font: 1em Arial, Helvetica, sans-serif;
+		
+}
+
+.info{
+	font: 1em Arial, Helvetica, sans-serif;
+	padding-left: .4em;
+		
+}
+
+
+#footer {
+    position: relative;
+    min-width: 84em;
+	width: 100%;
+	margin: 0;
+	padding: 0;
+	z-index: 1;
+	height: 4.8em;
+	background: #456ab4;
+	border-top: 20px solid purple;
+	bottom: 0;
+	padding: 0;
+}
+
+#nav_tab{
+	margin : 1.6em auto;
+	width: 30em;
+	padding: 0;
+}
+
+#nav_tab tr td {
+    text-align: center;  
+}	
+
+#nav_tab tr td a{
+	font: .85em Arial, Helvetica, sans-serif;
+	color: #00004d;
+	font-weight: bold;
+	text-decoration: none;
+}
+#footer p{
+    position: relative;
+    margin: 3em auto;
+    color: white;
+    width: 20%;
+    font: .85em Arial, Helvetica, sans-serif;
+}
+
+
+#bottomline{
+	width: 90%; 
+	margin: -1.2em 1.4em; 
+	border-bottom: 1px solid #dedede;"
+}
+
+
+
+

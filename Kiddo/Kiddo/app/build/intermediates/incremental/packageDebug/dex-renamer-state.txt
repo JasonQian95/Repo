@@ -1,0 +1,4 @@
+#Tue Dec 06 20:47:00 EST 2016
+base.0=C\:\\Users\\Jason Qian\\Desktop\\CS_Courses\\CSC301\\project-team-05\\Kiddo\\app\\build\\intermediates\\transforms\\dex\\debug\\folders\\1000\\1f\\main
+renamed.0=classes.dex
+file.0=C\:\\Users\\Jason Qian\\Desktop\\CS_Courses\\CSC301\\project-team-05\\Kiddo\\app\\build\\intermediates\\transforms\\dex\\debug\\folders\\1000\\1f\\main\\classes.dex

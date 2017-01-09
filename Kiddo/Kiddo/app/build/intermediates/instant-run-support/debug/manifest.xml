@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.team_05.kiddo"
+    android:versionCode="1"
+    android:versionName="1.0" >
+
+    <uses-sdk
+        android:minSdkVersion="15"
+        android:targetSdkVersion="24" />
+
+    <application
+        android:name="com.android.tools.fd.runtime.BootstrapApplication"
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme" >
+        <activity android:name="com.team_05.kiddo.MainActivity" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name="com.team_05.kiddo.TeacherInitialLoginActivity" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity android:name="com.team_05.kiddo.ClassesActivity" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity android:name="com.team_05.kiddo.SettingsActivity" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.team_05.kiddo.TabActivity"
+            android:windowSoftInputMode="adjustPan" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.team_05.kiddo.MessageActivity"
+            android:windowSoftInputMode="adjustPan" />
+        <activity android:name="com.team_05.kiddo.CreateEventActivity" />
+        <activity
+            android:name="com.team_05.kiddo.GroupMessageActivity"
+            android:windowSoftInputMode="adjustPan" />
+        <activity android:name="com.team_05.kiddo.EnrolmentRequestActivity" />
+        <activity android:name="com.team_05.kiddo.ParentInfo" />
+        <activity android:name="com.team_05.kiddo.TermsAndConditionsActivity" />
+        <activity android:name="com.team_05.kiddo.RegistrationConfirmationActivity" />
+        <activity android:name="com.team_05.kiddo.ChildrenActivity" />
+        <activity android:name="com.team_05.kiddo.EventDescriptionActivity" />
+        <activity android:name="com.team_05.kiddo.AddChildActivity" />
+        <activity android:name="com.team_05.kiddo.CourseEnrolmentActivity" />
+        <activity android:name="com.team_05.kiddo.AdminAddTeacher" />
+        <activity android:name="com.team_05.kiddo.AdminTeacherInvite" />
+        <activity android:name="com.team_05.kiddo.AdminTeacherInviteConfirm" />
+        <activity android:name="com.team_05.kiddo.ParentTabActivity" />
+        <activity android:name="com.team_05.kiddo.ParentClassTabActivity" />
+        <activity android:name="com.team_05.kiddo.AnnouncementDetailsActivity" />
+        <activity android:name="com.team_05.kiddo.EventDetailsActivity" />
+        <activity
+            android:name="com.team_05.kiddo.AdminTeacherDetails"
+            android:label="@string/title_activity_admin_teacher_details"
+            android:theme="@style/AppTheme" />
+        <activity android:name="com.team_05.kiddo.AdminViewTeacher" />
+        <activity android:name="com.team_05.kiddo.AdminMainMenu" />
+        <activity android:name="com.team_05.kiddo.AdminTeacherDelete" />
+        <activity android:name="com.team_05.kiddo.AdminManageClasses" />
+        <activity android:name="com.team_05.kiddo.AdminManageTeachers" />
+        <activity android:name="com.team_05.kiddo.AdminAddTeacherToClass" />
+        <activity android:name="com.team_05.kiddo.AdminAddClass" />
+        <activity android:name="com.team_05.kiddo.AdminViewClass" />
+        <activity android:name="com.team_05.kiddo.AdminClassList" />
+    </application>
+
+</manifest>
