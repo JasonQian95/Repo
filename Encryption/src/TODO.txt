@@ -1,4 +1,0 @@
-This is not going to work with 16 bit characters. If I wrap lshift/rshift
-16 bit characters, they will become unreadable characters displayed as
-'?' on my computer and as foreign characters if displayed properly. I cannot
-force them to be 8bit chars with &255 without a loss of information.
